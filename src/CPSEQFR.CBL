@@ -1,16 +1,3 @@
-      *****************************************************************
-      * Program name:    CPSEQFR                            
-      * Original author: Dave Nicolette            
-      *
-      * Demonstrates:
-      *
-      * How to read and write sequential datasets with fixed-length
-      * records.
-      *
-      * This program copies INFILE to OUTFILE and reverses the two 
-      * fields in each record. It also counts the number of records
-      * processed.
-      *****************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID.  CPSEQFR.
        ENVIRONMENT DIVISION. 

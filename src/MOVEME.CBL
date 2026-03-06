@@ -1,17 +1,3 @@
-      *****************************************************************
-      * Program name:    MOVEME                            
-      * Original author: Dave Nicolette            
-      *
-      * Demonstrates:
-      *
-      * How to assign alphanumeric values to Data Division items using
-      * the MOVE statement.
-      *
-      * This program performs various assignments using MOVE and
-      * displays the results on stdout (SYSOUT). The accompanying
-      * notes file (MOVE-notes.md) provides explanations of the effects
-      * of the assignments on data in memory.
-      *****************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID.  MOVEME.
        DATA DIVISION. 
@@ -39,8 +25,6 @@
                    15  WS-DISPLAY-NUMERIC-FORMATTED PIC -ZZ,ZZ9.99.
                10  WS-DISPLAY-CURRENCY-VALUE-TEXT.
                    15  WS-DISPLAY-CURRENCY-VALUE    PIC -$$,$$9.99.
-      *         10  WS-EXTERNAL-FLOATING-POINT-T.  
-      *             15  WS-EXTERNAL-FLOATING-POINT   PIC -9V(9)E-99.  
        01  WS-GROUP-ITEM.
            05  WS-ALPHA-FIELD-1       PIC X(05).
            05  WS-PACKED-FIELD-2      PIC S9(05) COMP-3.
@@ -65,7 +49,6 @@
            DISPLAY '  ASCII-based system, and in EBCDIC when run '
            DISPLAY '  on an EBCDIC-based system.'
 
-      * Example 1: Alphanumeric MOVE 
            MOVE 'Repent, Harlequin!' 
                 TO WS-ORIGINAL-VALUE
            MOVE  18 TO WS-ORIGINAL-LENGTH 
@@ -76,7 +59,6 @@
            DISPLAY 'Text value: ' 
                 '"' WS-ORIGINAL-VALUE(1:WS-ORIGINAL-LENGTH) '"'       
 
-      * Example 2: 32-bit binary value - normal MOVE 
            MOVE 375502 TO WS-BINARY-ITEM-4
            MOVE WS-BINARY-ITEM-4-AS-TEXT TO WS-ORIGINAL-VALUE
            MOVE LENGTH OF WS-BINARY-ITEM-4 TO WS-ORIGINAL-LENGTH
@@ -88,7 +70,6 @@
            DISPLAY 'Hex value: '
                WS-RESULT(1:WS-ORIGINAL-LENGTH * 2)        
 
-      * Example 3: 64-bit binary value - normal MOVE 
            MOVE -281064762375502 TO WS-BINARY-ITEM-8
            MOVE WS-BINARY-ITEM-8-AS-TEXT TO WS-ORIGINAL-VALUE
            MOVE LENGTH OF WS-BINARY-ITEM-8 TO WS-ORIGINAL-LENGTH
@@ -100,7 +81,6 @@
            DISPLAY 'Hex value: '
                WS-RESULT(1:WS-ORIGINAL-LENGTH * 2)        
 
-      * Example 4: 32-bit binary value - overwrite with spaces 
            MOVE SPACES TO WS-BINARY-ITEM-4-AS-TEXT
            MOVE WS-BINARY-ITEM-4-AS-TEXT TO WS-ORIGINAL-VALUE
            MOVE LENGTH OF WS-BINARY-ITEM-4 TO WS-ORIGINAL-LENGTH
@@ -112,7 +92,6 @@
            DISPLAY 'Hex value: '
                WS-RESULT(1:WS-ORIGINAL-LENGTH * 2)        
 
-      * Example 5: Single-precision floating-point value 
            MOVE 06.23E-24 TO WS-SINGLE-PRECISION
            MOVE WS-SINGLE-PRECISION-AS-TEXT
                 TO WS-ORIGINAL-VALUE 
@@ -125,7 +104,6 @@
            DISPLAY 'Hex value: '
                 WS-RESULT(1:WS-ORIGINAL-LENGTH * 2)        
 
-      * Example 6: Double-precision floating-point value 
            MOVE 3246.16E-32 TO WS-DOUBLE-PRECISION
            MOVE WS-DOUBLE-PRECISION-AS-TEXT
                 TO WS-ORIGINAL-VALUE 
@@ -138,7 +116,6 @@
            DISPLAY 'Hex value: '
                 WS-RESULT(1:WS-ORIGINAL-LENGTH * 2)        
 
-      * Example 7: Packed Decimal value - normal MOVE 
            MOVE -256.095 TO WS-PACKED-DECIMAL-ITEM.
            MOVE WS-PACKED-DECIMAL-ITEM-AS-TEXT 
                 TO WS-ORIGINAL-VALUE 
@@ -152,7 +129,6 @@
            DISPLAY 'Hex value: ' 
                 WS-RESULT(1:WS-ORIGINAL-LENGTH * 2)           
 
-      * Example 8: Packed Decimal value - overwrite value with spaces 
            MOVE SPACES TO WS-PACKED-DECIMAL-ITEM-AS-TEXT.
            MOVE WS-PACKED-DECIMAL-ITEM-AS-TEXT 
                 TO WS-ORIGINAL-VALUE 
@@ -166,7 +142,6 @@
            DISPLAY 'Hex value: ' 
                 WS-RESULT(1:WS-ORIGINAL-LENGTH * 2)    
 
-      * Example 9: Display Numeric Signed 
            MOVE -4832.61 TO WS-DISPLAY-NUMERIC-SIGNED 
            DISPLAY SPACE 
            DISPLAY 'Example 9'
@@ -175,7 +150,6 @@
            DISPLAY 'Result: ' 
                 WS-DISPLAY-NUMERIC-SIGNED    
 
-      * Example 10: Display Numeric with formatting
            MOVE -4832.61 TO WS-DISPLAY-NUMERIC-FORMATTED 
            DISPLAY SPACE 
            DISPLAY 'Example 10'
@@ -184,7 +158,6 @@
            DISPLAY 'Result: ' 
                 WS-DISPLAY-NUMERIC-FORMATTED    
 
-      * Example 11: Display Numeric with formatting for currency
            MOVE -4832.61 TO WS-DISPLAY-CURRENCY-VALUE  
            DISPLAY SPACE 
            DISPLAY 'Example 11'
@@ -193,16 +166,7 @@
            DISPLAY 'Result: ' 
                 WS-DISPLAY-CURRENCY-VALUE   
 
-      * Example 12: Display floating point value with formatting
-      *     MOVE 06.23E-24 TO WS-EXTERNAL-FLOATING-POINT  
-      *     DISPLAY SPACE 
-      *     DISPLAY 'Example 11'
-      *     DISPLAY 'Result of MOVE 06.23E-24 to item defined as '
-      *             '"PIC -9V(9)E-99" (with implicit USAGE DISPLAY)'
-      *     DISPLAY 'Result: ' 
-      *          WS-EXTERNAL-FLOATING-POINT   
 
-      * Example 13: Using INITIALIZE to initialize a group item 
            INITIALIZE WS-GROUP-ITEM
                REPLACING ALPHANUMERIC DATA BY SPACES
                          NUMERIC DATA BY ZEROES 
@@ -214,7 +178,6 @@
            DISPLAY 'WS-GROUP-ITEM after INITIALIZE statement'
            DISPLAY WS-RESULT(1:WS-ORIGINAL-LENGTH * 2)              
 
-      * Example 14: Using MOVE SPACES to initialize a group item 
            MOVE SPACES TO WS-GROUP-ITEM
            MOVE WS-GROUP-ITEM TO WS-ORIGINAL-VALUE 
            MOVE LENGTH OF WS-GROUP-ITEM TO WS-ORIGINAL-LENGTH

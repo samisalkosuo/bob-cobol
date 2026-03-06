@@ -1,15 +1,3 @@
-      *****************************************************************
-      * Program name:    DATE1                            
-      * Original author: Dave Nicolette            
-      *
-      * Demonstrates:
-      *
-      * How to get the current date and time using the intrinsic
-      * function CURRENT-DATE
-      *
-      * This program calls intrinsic function CURRENT-DATE and 
-      * displays various date and time fields the function returns.
-      *****************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID.  DATE1.
        DATA DIVISION. 
@@ -107,8 +95,6 @@
        PROCEDURE DIVISION.
            MOVE FUNCTION CURRENT-DATE to CURRENT-DATE-DATA
 
-      * Format the date and time consistent with the NCSA common 
-      * log format
 
            MOVE CORRESPONDING CURRENT-DATE TO NCSA-TIMESTAMP
            MOVE CORRESPONDING CURRENT-TIME TO NCSA-TIMESTAMP
@@ -120,7 +106,6 @@
            DISPLAY 'Example 1: Timestamp in NCSA common log format: '
                    NCSA-TIMESTAMP
 
-      * Format the date with full month name and ordinal day 
 
            DIVIDE DAY-OF-MONTH IN CURRENT-DATE BY 10 
                GIVING DAY-DIV-BY-10
@@ -147,7 +132,6 @@
            DISPLAY 'Example 2: Current date formatted verbosely: '
                    FULL-DATE
 
-      * Typical shorthand date, US format MM/DD/YY 
 
            MOVE CORRESPONDING CURRENT-DATE 
                 TO SHORTHAND-DATE-US-STYLE
@@ -158,7 +142,6 @@
                    'US style MM/DD/YY: '
                    SHORTHAND-DATE-US-STYLE 
 
-      * Typical shorthand date, European format DD.MM.YY 
 
            MOVE CORRESPONDING CURRENT-DATE 
                 TO SHORTHAND-DATE-EURO-STYLE

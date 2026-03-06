@@ -1,15 +1,3 @@
-      *****************************************************************
-      * Program name:    DATE2                            
-      * Original author: Dave Nicolette            
-      *
-      * Demonstrates:
-      *
-      * How to get the current date and time using the Cobol ACCEPT
-      * statement 
-      *
-      * This program uses ACCEPT to obtain the values of "conceptual
-      * data items" related to the current system date and time.
-      *****************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID.  DATE2.
        DATA DIVISION. 
@@ -101,7 +89,6 @@
            05  DAY-NAME OCCURS 7 PIC X(09).       
 
        PROCEDURE DIVISION.
-      * These are predefined "conceptual data items" 
            ACCEPT DATE-VALUE          FROM DATE 
            ACCEPT DATE-YYYYMMDD-VALUE FROM DATE YYYYMMDD
            ACCEPT DAY-VALUE           FROM DAY 
@@ -109,7 +96,6 @@
            ACCEPT DAY-OF-WEEK-VALUE   FROM DAY-OF-WEEK
            ACCEPT TIME-VALUE          FROM TIME 
 
-      * Format the date with full month name and ordinal day 
 
            DIVIDE DATE-DD IN DATE-YYYYMMDD-VALUE BY 10 
                GIVING DAY-DIV-BY-10
@@ -142,7 +128,6 @@
            DISPLAY 'Example 1: Current date formatted verbosely: '
                    FULL-DATE
 
-      * Typical shorthand date, US format MM/DD/YY 
 
            MOVE DATE-MM OF DATE-VALUE 
                 TO MONTH OF SHORTHAND-DATE-US-STYLE 
@@ -155,7 +140,6 @@
                    'US style MM/DD/YY: '
                    SHORTHAND-DATE-US-STYLE 
 
-      * Typical shorthand date, European format DD.MM.YY 
 
            MOVE DATE-MM OF DATE-VALUE 
                 TO MONTH OF SHORTHAND-DATE-EURO-STYLE 
@@ -168,7 +152,6 @@
                    'European style DD.MM.YY: '
                    SHORTHAND-DATE-EURO-STYLE 
            
-      * Time with precision of hundredths of a second
 
            DISPLAY SPACE 
            DISPLAY 'Example 4: Time with precision of hundredths '

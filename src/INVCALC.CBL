@@ -1,13 +1,3 @@
-      *****************************************************************
-      * Program name:    INVCALC                           
-      * Original author: Dave Nicolette            
-      *
-      * Demonstrates:
-      *
-      * How to write typical business calculations in Cobol.
-      *
-      * This program calculates invoice totals for fake invoice data.
-      *****************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID.  INVCALC.
        DATA DIVISION. 
@@ -51,8 +41,6 @@
 
        PROCEDURE DIVISION.
 
-      *---------------------------------------------------------------
-      * Example 1: Invoice total calculation 
 
            INITIALIZE INVOICE 
                REPLACING ALPHANUMERIC DATA BY SPACES 

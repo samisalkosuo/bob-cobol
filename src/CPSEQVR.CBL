@@ -1,16 +1,3 @@
-      *****************************************************************
-      * Program name:    CPSEQFR                            
-      * Original author: Dave Nicolette            
-      *
-      * Demonstrates:
-      *
-      * How to read and write sequential datasets (QSAM) with 
-      * variable-length records.
-      *
-      * This program reads VARFILE1, appends data to each record, and
-      * writes the records to VARFILE2. It also counts the number of 
-      * records processed.
-      *****************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID.  CPSEQVR.
        ENVIRONMENT DIVISION. 

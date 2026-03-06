@@ -1,10 +1,3 @@
-      ****************************************************************
-      * Convert any value into displayable hexadecimal characters.
-      *
-      * This is a generalized version of the sample code found here:
-      * https://www.ibm.com/support/pages/
-      *   how-display-hexadecimal-using-cobol
-      ****************************************************************
        IDENTIFICATION DIVISION.                      
        PROGRAM-ID. HEX2TEXT.
        ENVIRONMENT DIVISION.                          

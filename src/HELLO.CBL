@@ -1,16 +1,3 @@
-      *****************************************************************
-      * Program name:    HELLO                            
-      * Original author: Dave Nicolette            
-      *
-      * Demonstrates:
-      *
-      * How to handle variable-length text values using the INSPECT
-      * and STRING verbs and the REVERSE intrinsic function.
-      *
-      * This program prompts the user for a name via stdin (SYSIN) and
-      * then writes a greeting of the form, "Hello, Your Name!" to
-      * stdout (SYSOUT).
-      *****************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID.  HELLO.
        DATA DIVISION. 

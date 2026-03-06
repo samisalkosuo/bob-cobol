@@ -1,15 +1,3 @@
-      *****************************************************************
-      * Program name:    IFEVAL                           
-      * Original author: Dave Nicolette            
-      *
-      * Demonstrates:
-      *
-      * The Cobol IF/ELSE statement and EVALUATE statement.
-      *
-      * This program performs various comparisons using IF/ELSE 
-      * statements and EVALUATE statements. It does not emit any
-      * output. The source code is meant as a reference/guide.
-      *****************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID.  COND88.
        DATA DIVISION. 
@@ -24,13 +12,10 @@
 
        PROCEDURE DIVISION.
 
-      *---------------------------------------------------------------
-      * Example 1: IF statement, 2 alphanumeric items.
 
            MOVE 'cucumber' TO ALPHA-1 
            MOVE 'radish' TO ALPHA-2
 
-      * Compare two alphanumeric items, conventional style
            IF ALPHA-1 IS EQUAL TO ALPHA-2 
                MOVE 'equal' TO RESULT-OF-COMPARE 
            END-IF 
@@ -45,7 +30,6 @@
                MOVE 'different' TO RESULT-OF-COMPARE    
            END-IF             
 
-      * Compare two alphanumeric items, traditional style 
            IF ALPHA-1 IS EQUAL TO ALPHA-2 
                MOVE 'equal' TO RESULT-OF-COMPARE.     
 
@@ -54,13 +38,10 @@
            ELSE     
                MOVE 'different' TO RESULT-OF-COMPARE.           
 
-      * Compare two alphanumeric items, modern style 
            if alpha-1 equal alpha-2   
                move 'equal' to result-of-compare   
            end-if              
 
-      *---------------------------------------------------------------
-      * Example 2: IF statement, alphanumeric field vs literal   
 
            IF ALPHA-1 IS EQUAL TO 'foobar'    
                MOVE 'equal' TO RESULT-OF-COMPARE    
@@ -68,9 +49,6 @@
                MOVE 'different' TO RESULT-OF-COMPARE  
            END-IF 
 
-      *---------------------------------------------------------------
-      * Example 3: Verify a numeric item contains numeric data 
-      * (This is to avoid a Data Exception or S0C7 runtime error)
 
            MOVE 'garbage' TO NUMERIC-2-X    
            IF NUMERIC-2 IS NUMERIC   
@@ -79,9 +57,6 @@
                MOVE 1 TO NUMERIC-2              
            END-IF 
 
-      *---------------------------------------------------------------
-      * Example 4: Verify a numeric item is greater than zero 
-      * (This is to avoid divide-by-zero exceptions)  
 
            MOVE ZERO TO NUMERIC-1
            MOVE 100 TO NUMERIC-2 
@@ -97,8 +72,6 @@
                END-SUBTRACT    
            END-IF 
 
-      *---------------------------------------------------------------
-      * Example 5: IF statement, two numeric fields   
 
            MOVE 7 TO NUMERIC-1 
            MOVE 36 TO NUMERIC-2 
@@ -108,8 +81,6 @@
                MOVE 'numeric-2' TO RESULT-OF-COMPARE
            END-IF        
 
-      *---------------------------------------------------------------
-      * Example 6: EVALUATE statement  
 
            MOVE 8 TO NUMERIC-1  
            MOVE 13 TO NUMERIC-2 
@@ -123,8 +94,6 @@
                   MOVE 'equal' TO RESULT-OF-COMPARE
            END-EVALUATE
 
-      *---------------------------------------------------------------
-      * Example 6: EVALUATE statement, two conditions  
 
            MOVE 8 TO NUMERIC-1  
            MOVE 13 TO NUMERIC-2 

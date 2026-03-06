@@ -1,22 +1,8 @@
-      *****************************************************************
-      * Program name:    REFORMER                            
-      * Original author: Dave Nicolette            
-      *
-      * Demonstrates:
-      *
-      * How to manipulate data items using INSPECT REPLACING, UNSTRING,
-      * and reference modification.
-      *
-      * This program uses various Cobol features to reformat the data
-      * from an "input record" originating with an external business
-      * entity into "our" company's internal record format.
-      *****************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID.  REFORMER.
        DATA DIVISION. 
        WORKING-STORAGE SECTION.
        01  FILLER. 
-      * Record received from external business entity. 
            05  INPUT-RECORD.
                10  IN-PRODUCT-CODE           PIC X(04).
                10  FILLER                    PIC X(04).
@@ -26,12 +12,9 @@
                10  IN-QUANTITY               PIC 9(04). 
                10  IN-UNIT-PRICE             PIC S9(03)V99.
                10  FILLER                    PIC X(02).
-      *        Date is in MM/DD/YY format         
                10  IN-INVOICE-DATE           PIC X(08).
-      *        Taxable = 'Y', Non-taxable = space     
                10  IN-TAXABLE                PIC X.
 
-      * Our company's record format.          
            05  OUTPUT-RECORD.
                10  OUT-SKU                    PIC X(10).
                10  FILLER                     PIC X.
@@ -72,7 +55,6 @@
            05  WS-SKU-LOOKUP-TABLE REDEFINES WS-SKU-LOOKUP-DATA.
                10  WS-SKU-LOOKUP-ENTRY 
                        OCCURS 5 TIMES 
-      *                ASCENDING THEIR-PRODUCT-CODE-PREFIX
                        INDEXED BY SKU-INDEX.
                    15  THEIR-PRODUCT-CODE-PREFIX PIC XX. 
                    15  OUR-SKU-GROUP-CODE        PIC X(04).  
@@ -92,7 +74,6 @@
 
        PROCEDURE DIVISION.
 
-      * Input record we might receive from the external entity
 
            MOVE 'PK29'           TO IN-PRODUCT-CODE 
            MOVE 'Pastel 29'      TO IN-PRODUCT-DESC 
@@ -102,7 +83,6 @@
            MOVE '10/15/22'       TO IN-INVOICE-DATE 
            MOVE 'Y'              TO IN-TAXABLE 
 
-      * Reformat the date value            
 
            UNSTRING IN-INVOICE-DATE 
                DELIMITED BY WS-SLASH 
@@ -123,7 +103,6 @@
                'OUT-INV-DATE-YYYY-MM-DD <' 
                OUT-INV-DATE-YYYY-MM-DD  '>'        
 
-      * Lookup the SKU prefix for our system 
 
            SEARCH WS-SKU-LOOKUP-ENTRY 
                AT END  
@@ -149,7 +128,6 @@
            DISPLAY 'IN-PRODUCT-CODE <' IN-PRODUCT-CODE 
                '> converted to OUT-SKU <' OUT-SKU '>'                   
 
-      * Convert the 'taxable item' indicator to our format 
 
            IF IN-TAXABLE IS EQUAL TO 'Y' 
                SET TAXABLE-ITEM TO TRUE 
@@ -166,7 +144,6 @@
                DISPLAY 'TAXABLE-ITEM condition name FALSE'    
            END-IF             
 
-      * Move quantity and unit price and convert to packed decimal 
 
            MOVE IN-QUANTITY TO OUT-QUANTITY 
            MOVE IN-UNIT-PRICE TO OUT-UNIT-PRICE 
@@ -178,7 +155,6 @@
            DISPLAY 'IN-UNIT-PRICE <' IN-UNIT-PRICE '> converted to '
                'packed OUT-UNIT-PRICE <' OUT-UNIT-PRICE '>'    
 
-      * Move invoice number - no conversion necessary 
 
            MOVE IN-INVOICE-NO TO OUT-INVOICE-NO
 

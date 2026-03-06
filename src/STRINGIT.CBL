@@ -1,15 +1,3 @@
-      *****************************************************************
-      * Program name:    STRINGIT                            
-      * Original author: Dave Nicolette            
-      *
-      * Demonstrates:
-      *
-      * How to manipulate data items using STRING, UNSTRING, INSPECT,
-      * and reference modification.
-      *
-      * This program performs various operations to manipulate text
-      * values and displays the results on stdout (SYSOUT).
-      *****************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID.  STRINGIT.
        DATA DIVISION. 

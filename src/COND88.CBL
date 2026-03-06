@@ -1,15 +1,3 @@
-      *****************************************************************
-      * Program name:    COND88                           
-      * Original author: Dave Nicolette            
-      *
-      * Demonstrates:
-      *
-      * How to use the 88-level data item in Cobol.
-      *
-      * This program performs various operations using 88-level data
-      * items. It does not emit any output. View the source to see 
-      * how to work with 88-level items ("condition names").
-      *****************************************************************
        IDENTIFICATION DIVISION.
        PROGRAM-ID.  COND88.
        DATA DIVISION. 
@@ -34,7 +22,6 @@
 
        PROCEDURE DIVISION.
 
-      * Example 1: Simple 88-level.     
 
            SET SIMPLE-88 TO TRUE 
            IF SIMPLE-88 
@@ -45,7 +32,6 @@
                MOVE 'false' TO THE-ANSWER 
            END-IF 
 
-      * Example 2: 88-level with FALSE clause
 
            SET SIMPLE-88-WITH-FALSE TO TRUE 
            IF SIMPLE-88-WITH-FALSE
@@ -57,7 +43,6 @@
                MOVE 'false' TO THE-ANSWER 
            END-IF     
 
-      * Example 3: 88-level with multiple values 
 
            SET CATEGORY-A TO TRUE 
            IF  CATEGORY-A 
@@ -74,7 +59,6 @@
                   MOVE '?' TO THE-ANSWER 
            END-EVALUATE
                
-      * Example 4: 88-level with a range of values 
 
            MOVE 37 TO PERSON-AGE 
            EVALUATE TRUE   

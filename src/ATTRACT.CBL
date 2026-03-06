@@ -1,45 +1,21 @@
-      *****************************************************************
-      * Program name:    ATTRACT                           
-      * Original author: Dave Nicolette            
-      *
-      * Demonstrates:
-      *
-      * Illustrates the use of floating-point operations to perform
-      * scientific calculations.
-      *
-      * Cobol is designed to support business application development,
-      * but it can be used in other domains, as well. This program
-      * calculates the gravitational attraction between two bodies
-      * in space. You would probably not choose Cobol for work in this
-      * domain. The sample is only meant for demonstration purposes.
-      *****************************************************************
        Identification Division.
        Program-ID.  ATTRACT.
        Data Division. 
        Working-Storage Section. 
        01  ComputationalWorkAreas.
-      * Gravitational constant G 
            05  G                  comp-2 value 6.67428e-11.
-      * distance between the two bodies on x, y, and computed d 
            05  dx                 comp-2. 
            05  dy                 comp-2.
            05  d                  comp-2.     
-      * force of attraction 
            05  f                  comp-2.  
-      * intermediate result when calculating force direction 
            05  theta              comp-2.   
-      * force along the x and y axes 
            05  fx                 comp-2. 
            05  fy                 comp-2.                                
 
-      * Bodies 
            05  Body occurs 2 indexed by BodyIx.
-      * mass in kg     
                10  mass           comp-2.
-      * x and y velocities in meters per second 
                10  vx             comp-2.
                10  vy             comp-2.
-      * x and y positions in meters 
                10  px             comp-2.
                10  py             comp-2.  
 
@@ -152,7 +128,6 @@
            .
 
        ComputeAttraction. 
-      * Compute the distance between the two bodies 
            compute dx = px(1) - px(2) 
            compute dy = py(1) - py(2) 
            compute d = function sqrt((dx * dx) + (dy * dy))
@@ -163,16 +138,11 @@
            end-if
            display DistanceDisplay  d 
 
-      * Compute the force of attraction 
            compute f = (G * mass(1) * mass(2)) / (d * d)
            display ForceDisplay f 
 
-      * Compute the direction of force 
 
-      *    Ah, if only...
-      *    compute theta = function atan2(dy, dx)
 
-      *    ...instead, this: wrong, but OK for this demo.
            compute theta = function atan(dx)
            compute fx = function cos(theta * f) 
            compute fy = function sin(theta * f) 
